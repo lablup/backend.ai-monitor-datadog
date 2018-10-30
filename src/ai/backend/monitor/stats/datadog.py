@@ -28,3 +28,9 @@ class DatadogStatsMonitor(AbstractStatsMonitor):
 
     def __exit__(self, type, value, traceback):
         self.statsd.__exit__(type, value, traceback)
+
+
+def get_plugin(config):
+    stats_monitor = DatadogStatsMonitor()
+    stats_monitor.init(config)
+    return stats_monitor
