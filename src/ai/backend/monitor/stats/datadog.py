@@ -30,6 +30,15 @@ class DatadogStatsMonitor(AbstractStatsMonitor):
         self.statsd.__exit__(type, value, traceback)
 
 
+def add_plugin_args(parser):
+    parser.add('--datadog-api-key', env_var='DATADOG_API_KEY',
+               type=str, default=None,
+               help='The API key for Datadog monitoring agent.')
+    parser.add('--datadog-app-key', env_var='DATADOG_APP_KEY',
+               type=str, default=None,
+               help='The application key for Datadog monitoring agent.')
+
+
 def get_plugin(config):
     stats_monitor = DatadogStatsMonitor()
     stats_monitor.init(config)
