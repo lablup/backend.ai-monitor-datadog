@@ -8,7 +8,7 @@ class DatadogStatsMonitor(AbstractStatsMonitor):
     def __init__(self):
         self.statsd = None
 
-    def init(self, config, **kwargs):
+    def init(self, config):
         datadog.initialize(api_key=config.datadog_api_key,
                            app_key=config.datadog_app_key)
         self.statsd = datadog.statsd
@@ -39,7 +39,7 @@ def add_plugin_args(parser):
                help='The application key for Datadog monitoring agent.')
 
 
-def get_plugin(config, **kwargs):
+def get_plugin(config):
     stats_monitor = DatadogStatsMonitor()
-    stats_monitor.init(config, **kwargs)
+    stats_monitor.init(config)
     return stats_monitor
