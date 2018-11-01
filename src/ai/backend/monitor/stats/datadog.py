@@ -1,6 +1,6 @@
 import datadog
 
-from .base import AbstractStatsMonitor
+from ai.backend.common.monitor import AbstractStatsMonitor
 
 
 class DatadogStatsMonitor(AbstractStatsMonitor):
