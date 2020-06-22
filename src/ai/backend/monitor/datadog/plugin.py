@@ -25,7 +25,7 @@ class DatadogStatsMonitor(AbstractStatReporterPlugin):
         await self.cleanup()
         await self.init()
 
-    async def report_stats(
+    async def report_metric(
         self,
         metric_type: StatMetricTypes,
         metric_name: str,
