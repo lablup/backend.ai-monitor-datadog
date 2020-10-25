@@ -11,7 +11,7 @@ from ai.backend.common.plugin.monitor import AbstractStatReporterPlugin, StatMet
 
 class DatadogStatsMonitor(AbstractStatReporterPlugin):
 
-    async def init(self) -> None:
+    async def init(self, context: Any = None) -> None:
         datadog.initialize(api_key=self.plugin_config['datadog_api_key'],
                            app_key=self.plugin_config['datadog_app_key'])
         self.statsd = datadog.statsd
